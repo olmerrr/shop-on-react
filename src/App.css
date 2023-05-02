@@ -6,7 +6,7 @@
 }
 
 .nav-wrapper {
-  padding: 0 15px;
+  padding: 0 0 0 15px;
 }
 
 .filters__item:not(:last-child) {
@@ -15,6 +15,7 @@
 .card {
   display: flex;
   flex-direction: column;
+  text-align: center;
 }
 
 .card-content {
@@ -24,9 +25,38 @@
 .card-info {
   display: flex;
   flex-direction: column;
-  align-items: center;
+}
+.price {
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
 }
 
 .btn-big {
   width: 100%;
+}
+.cart {
+  display: flex;
+  align-items: flex-end;
+  z-index: 2;
+  position: fixed;
+  right: 1rem;
+  cursor: pointer;
+}
+
+.cart-icon {
+  font-size: 2.4rem;
+}
+
+.page-footer {
+  background-color: #000;
+}
+
+@media screen and (max-width: 960px) {
+  .cart {
+    bottom: 0;
+  }
+  .page-footer {
+    background-color: #ccc;
+  }
 }

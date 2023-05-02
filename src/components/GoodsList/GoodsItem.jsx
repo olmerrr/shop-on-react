@@ -6,20 +6,26 @@ export const GoodsItem = (props) => {
     name,
     description,
     price,
-    full_background
+    full_background,
+    addToBasket = Function.prototype
   } = props;
 
-return ( <div className="card" id={id}>
+return ( <div className="card">
     <div className="card-image">
-      <img src={full_background} />
+      <img src={full_background} alt={name}/>
     </div>
     <div className="card-content">
-      <h3 className="card-title">{name}</h3>
-      <p>{description}</p>
-      <p>{price} $</p>
-      <div className="card-action">
-        <button className="btn btn-big">Buy</button>
-      </div>
+      <div className="card-title">{name.length <= 12 ? name : name.slice(-7)}</div>
+      <div>{description.length <= 24 ? description : description.slice(-20)}</div>
+      <div className="price">{price} $</div>
+        <button
+          className="btn btn-big"
+          onClick={() => addToBasket({
+            id,
+            name,
+            price
+          })}
+        >Buy</button>
     </div>
   </div>
 )
