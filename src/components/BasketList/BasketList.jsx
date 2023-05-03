@@ -1,6 +1,10 @@
 import React from "react";
 import {BasketItem} from "./BasketItem";
-export const BasketList = ({order = [], handleBasketShow = Function.prototype}) => {
+export const BasketList = (
+  { order = [],
+    handleBasketShow = Function.prototype,
+    removeFromBasket = Function.prototype
+  }) => {
   const totalPrice = order.reduce((sum, el) => {
     return sum + el.price * el.quantity;
   }, 0)
@@ -10,7 +14,12 @@ export const BasketList = ({order = [], handleBasketShow = Function.prototype}) 
         <li className="collection-item active">Cart</li>
 
         { order.length ? order.map(item => (
-          <BasketItem key={item.id} {...item}/>)
+          <BasketItem
+            key={item.id}
+            {...item}
+            removeFromBasket={removeFromBasket}
+          />
+          )
         ) : <li className="collection-item">Empty, you can change this..
               <i className="material-icons">sentiment_very_satisfied</i></li>
         }

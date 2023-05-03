@@ -3,7 +3,7 @@ import React from "react";
 export const Header = () => {
   return (
     <header className="header">
-      <nav>
+      <nav className="#3949ab indigo darken-1">
         <div className="nav-wrapper">
           <a href="#" className="brand-logo">Fortnite</a>
           <ul id="nav-mobile" className="right hide-on-med-and-down">
