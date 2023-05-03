@@ -1,7 +1,9 @@
 import React from "react";
-export const Cart = ({ quantity = 0 }) => {
-  return <div className="cart">
+export const Cart = ({ quantity = 0, handleBasketShow = Function.prototype}) => {
+  return <div className="cart" onClick={handleBasketShow}>
     <i className="material-icons cart-icon">shopping_basket</i>
-    { quantity ? <span className="cart-quantity">{quantity}</span> : "" }
+    {
+      quantity ? <span className="cart-quantity">{quantity}</span> : ""
+    }
   </div>
 }

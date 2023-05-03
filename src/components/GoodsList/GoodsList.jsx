@@ -8,8 +8,8 @@ export const GoodsList = (props) => {
     return  <h2>Nothing..</h2>
   }
   return <div className="goods">
-      {goods.map(item => <GoodsItem
-        key={item.id}
+      {goods.map((item, index) => <GoodsItem
+        key={index}
         {...item}
         addToBasket={addToBasket}
       />

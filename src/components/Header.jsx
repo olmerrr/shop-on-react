@@ -5,7 +5,7 @@ export const Header = () => {
     <header className="header">
       <nav>
         <div className="nav-wrapper">
-          <a href="#" className="brand-logo">Shop on React</a>
+          <a href="#" className="brand-logo">Fortnite</a>
           <ul id="nav-mobile" className="right hide-on-med-and-down">
             <li><a href="sass.html">Sass</a></li>
             <li><a href="badges.html">Components</a></li>

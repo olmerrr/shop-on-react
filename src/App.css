@@ -22,6 +22,11 @@
   flex-grow: 1;
 }
 
+.card-image {
+  min-height: 285px;
+  height: 100%;
+}
+
 .card-info {
   display: flex;
   flex-direction: column;
@@ -35,19 +40,36 @@
 .btn-big {
   width: 100%;
 }
+
 .cart {
-  display: flex;
-  align-items: flex-end;
-  z-index: 2;
   position: fixed;
   right: 1rem;
   cursor: pointer;
+  z-index: 5;
+  display: flex;
+  align-items: flex-end;
 }
 
 .cart-icon {
   font-size: 2.4rem;
 }
 
+.basket-list {
+  position: fixed;
+  max-width: 600px;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+}
+
+.basket-close {
+  position: fixed;
+  top: 1.2rem;
+  right: 1.4rem;
+  cursor: pointer;
+}
 .page-footer {
   background-color: #000;
 }

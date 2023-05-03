@@ -10,12 +10,22 @@ export const GoodsItem = (props) => {
     addToBasket = Function.prototype
   } = props;
 
-return ( <div className="card">
+return (
+  <div className="card">
     <div className="card-image">
-      <img src={full_background} alt={name}/>
+      {
+        full_background === "N/A"  ? <img
+            src={`https://bitsofco.de/img/Qo5mfYDE5v-350.avif`}
+            alt={name}
+          />
+          : <img
+            src={full_background}
+            alt={name}
+          />
+      }
     </div>
     <div className="card-content">
-      <div className="card-title">{name.length <= 12 ? name : name.slice(-7)}</div>
+      <div className="card-title">{name.length <= 12 ? name : name.slice(-10)}</div>
       <div>{description.length <= 24 ? description : description.slice(-20)}</div>
       <div className="price">{price} $</div>
         <button

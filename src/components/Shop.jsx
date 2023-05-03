@@ -4,20 +4,27 @@ import {GoodsList} from "./GoodsList/GoodsList";
 import {Cart} from "./Cart";
 
 import {API_KEY, API_URL} from "../config";
+import {BasketList} from "./BasketList/BasketList";
 export const Shop = () => {
   const [goods, setGoods] = useState([]);
   const [order, setOrder] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
 
+  const [isBasketShow, setBasketShow] = useState(false);
+  const [isLoading, setLoading] = useState(true);
+
+  const handleBasketShow = () => {
+    setBasketShow(!isBasketShow);
+  }
   const addToBasket = (item) => {
-    const itemIndex =  order.findIndex(orderItem => orderItem.id === item.id);
+    const itemIndex = order.findIndex(orderItem => orderItem.id === item.id)
     if (itemIndex < 0) {
       const newItem = {
         ...item,
         quantity: 1
-      }
+      };
+
       setOrder([...order, newItem]);
-    } else  {
+    } else {
       const newOrder = order.map((orderItem, index) => {
         if (index === itemIndex) {
           return {
@@ -25,9 +32,10 @@ export const Shop = () => {
             quantity: orderItem.quantity + 1
           }
         } else {
-          return item;
+          return orderItem;
         }
       })
+
       setOrder(newOrder);
     }
   }
@@ -42,18 +50,28 @@ export const Shop = () => {
       .then(data => {
         if (data.featured && data.featured.length) {
           setGoods(data.featured);
-          setIsLoading(false);
+          setLoading(false);
         }
       })
-      .catch(err => console.error(err))
-  }, [])
+      .catch(err => console.error(err));
+  }, []);
+
   return (
    <main className="container content">
-     <Cart
-       quantity={order.length}
-     />
+     { <Cart
+        quantity={order.length}
+        handleBasketShow={handleBasketShow}
+        />
+     }
      {
        isLoading ? <Preloader /> : <GoodsList goods={goods} addToBasket={addToBasket}/>
+     }
+
+     {
+       isBasketShow && <BasketList
+                         order={order}
+                         handleBasketShow={handleBasketShow}
+                        />
      }
    </main>
   )
