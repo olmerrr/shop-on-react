@@ -1,6 +1,8 @@
 import React from "react";
 import {GoodsItem} from "./GoodsItem";
 
+import "./style.css";
+
 export const GoodsList = (props) => {
   const {goods = [], addToBasket = Function.prototype} = props;
 

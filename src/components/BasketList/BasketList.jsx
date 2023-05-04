@@ -1,5 +1,8 @@
 import React from "react";
 import {BasketItem} from "./BasketItem";
+
+import "./style.css";
+
 export const BasketList = (
   { order = [],
     handleBasketShow = Function.prototype,

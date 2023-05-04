@@ -1,10 +1,4 @@
 
-.goods {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 1rem;
-}
-
 .nav-wrapper {
   padding: 0 0 0 15px;
 }
@@ -12,101 +6,14 @@
 .filters__item:not(:last-child) {
   margin-right: 1rem;
 }
-.card {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-}
 
-.card-content {
-  flex-grow: 1;
-}
-
-.card-image {
-  min-height: 285px;
-  height: 100%;
-}
-
-.card-info {
-  display: flex;
-  flex-direction: column;
-}
-.price {
-  font-size: 18px;
-  font-weight: 600;
-  text-align: center;
-}
-
-.btn-big {
-  width: 100%;
-}
-
-.cart {
-  position: fixed;
-  right: 1rem;
-  cursor: pointer;
-  z-index: 5;
-  display: flex;
-  align-items: flex-end;
-}
-
-.cart-icon {
-  font-size: 2.4rem;
-}
-
-.basket-list {
-  position: fixed;
-  max-width: 600px;
-  width: 100%;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #fff;
-  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
-  animation: show 500ms ease-in-out;
-  border-radius: 2px;
-}
-
-.basket-remove {
-  cursor: pointer;
-}
-
-.basket-close {
-  position: fixed;
-  top: 1.2rem;
-  right: 1.4rem;
-  cursor: pointer;
-}
 .page-footer {
   background-color: #000;
 }
 
 @media screen and (max-width: 960px) {
-  .cart {
-    bottom: 0;
-  }
-  .basket-list {
-    max-width: 400px;
-  }
   .page-footer {
     background-color: #ccc;
   }
 }
 
-@media screen and (max-width: 480px) {
-  .basket-list {
-    max-width: 85%;
-    }
-  }
-
-
-@keyframes show {
- from {
-   top: 70%;
-   opacity: 0;
- }
- to {
-   top: 50%;
-   opacity: 1;
- }
-}

@@ -1,0 +1,35 @@
+.goods {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.card-content {
+    flex-grow: 1;
+}
+
+.card-image {
+    min-height: 285px;
+    height: 100%;
+}
+
+.card-info {
+    display: flex;
+    flex-direction: column;
+}
+.price {
+    font-size: 18px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.btn-big {
+    width: 100%;
+}
+

@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
-import { Preloader } from "./Preloader";
+import { Preloader } from "../layout/Preloader";
 import {GoodsList} from "./GoodsList/GoodsList";
-import {Cart} from "./Cart";
+import {Cart} from "./Cart/Cart";
 
 import {API_KEY, API_URL} from "../config";
 import {BasketList} from "./BasketList/BasketList";
