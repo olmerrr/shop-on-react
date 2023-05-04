@@ -1,23 +1,61 @@
 import React, {useState, useEffect} from "react";
 import { Preloader } from "../layout/Preloader";
+import {Alert} from "../layout/Alert";
+
 import {GoodsList} from "./GoodsList/GoodsList";
 import {Cart} from "./Cart/Cart";
+import {BasketList} from "./BasketList/BasketList";
 
 import {API_KEY, API_URL} from "../config";
-import {BasketList} from "./BasketList/BasketList";
 export const Shop = () => {
   const [goods, setGoods] = useState([]);
   const [order, setOrder] = useState([]);
+  const [alertName, setAlertName] = useState("");
 
   const [isBasketShow, setBasketShow] = useState(false);
   const [isLoading, setLoading] = useState(true);
 
+  const closeAlert = () => {
+    setAlertName("");
+  }
   const handleBasketShow = () => {
     setBasketShow(!isBasketShow);
   }
 
   const removeFromBasket = (itemId) => {
-    const newOrder = order.filter((item) => item.id !== itemId)
+    const newOrder = order.filter((item) => item.id !== itemId);
+    setOrder(newOrder);
+  }
+
+  const incQuantity = (itemId) => {
+    const newOrder = order.map((el) => {
+      if (el.id === itemId) {
+        const newQuantity = el.quantity + 1;
+        return {
+          ...el,
+          quantity: newQuantity
+        }
+      }
+      else {
+        return  el;
+      }
+    })
+    setOrder(newOrder);
+  }
+
+  const decQuantity = (itemId) => {
+    const newOrder = order.map((el) => {
+      if (el.id === itemId) {
+        const newQuantity = el.quantity - 1;
+        return {
+          ...el,
+          quantity: newQuantity >= 1 ? newQuantity  : 1
+        }
+      }
+      else {
+        return  el;
+      }
+    })
     setOrder(newOrder);
   }
   const addToBasket = (item) => {
@@ -40,9 +78,9 @@ export const Shop = () => {
           return orderItem;
         }
       })
-
       setOrder(newOrder);
     }
+    setAlertName(item.name);
   }
 
   useEffect(function getGoods() {
@@ -68,6 +106,11 @@ export const Shop = () => {
         handleBasketShow={handleBasketShow}
         />
      }
+
+     {
+       alertName && <Alert name={alertName}  closeAlert={closeAlert}/>
+     }
+
      {
        isLoading ? <Preloader /> : <GoodsList goods={goods} addToBasket={addToBasket}/>
      }
@@ -77,6 +120,8 @@ export const Shop = () => {
                          order={order}
                          handleBasketShow={handleBasketShow}
                          removeFromBasket={removeFromBasket}
+                         incQuantity={incQuantity}
+                         decQuantity={decQuantity}
                         />
      }
    </main>

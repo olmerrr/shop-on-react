@@ -11,6 +11,12 @@
     animation: show 500ms ease-in-out;
 }
 
+.row-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .basket-remove {
     cursor: pointer;
 }
@@ -20,6 +26,12 @@
     top: 1.2rem;
     right: 1.4rem;
     cursor: pointer;
+}
+
+.quantity-icon {
+    cursor: pointer;
+    color: #26a69a;
+    font-weight: 500;
 }
 
 @media screen and (max-width: 960px) {
